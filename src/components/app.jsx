@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import MusicTable from './MusicTable/musicTable';
 
 class App extends Component {
-    state = { }
+    state = {
+        songs: []
+     }
+    
     render() {
         return(
-            <h1>Test</h1>
+            <div>
+                <MusicTable />
+            </div>
         )
     }
 }
