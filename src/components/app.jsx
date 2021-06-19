@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import MusicTable from './MusicTable/musicTable';
 
 class App extends Component {

@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import DeleteSong from '../DeleteSong/deleteSong'
 
-class musicTable extends Component {
+
+class MusicTable extends Component {
     constructor(props) {
         super(props);
             this.state = {
@@ -10,13 +12,13 @@ class musicTable extends Component {
     }
 
     componentDidMount() {
-        this.makeSongsRequest();
+        this.getAllSongs();
     }
 
-    async makeSongsRequest() {
+    async getAllSongs() {
         try{
             console.log("make songs request is called")  // test
-            let response = await axios.get('http://127.0.0.1:8000/music/?format=json');
+            let response = await axios.get('http://127.0.0.1:8000/music/');
             console.log(response.data)  // test
             this.setState({
                 songs: response.data
@@ -27,35 +29,52 @@ class musicTable extends Component {
         }
    }
 
+   async deleteSongById(id) {
+        try{
+            console.log("delete song function is called")  // test
+            await axios.delete(`http://127.0.0.1:8000/music/${id}/`)
+            await this.getAllSongs()
+            console.log("delete song response")  // test
+        }
+       catch (ex) {
+           console.log(ex);
+        }
+    }
+
     renderSongs() {
-    const songsList = this.state.songs.map((songs) => {
+        const deleteMethod = this.deleteSongById.bind(this);
+        const songsList = this.state.songs.map((songs) => {
+                   
         return (
-            <tr>
-                <td>{songs.artist}</td>
-                <td>{songs.title}</td>
-                <td>{songs.album}</td>
-                <td>{songs.genre}</td>
-                <td>{songs.release_date}</td>
-            </tr>
+            <thead key={songs.id}>
+                <tr>
+                    <td>{songs.artist}</td>
+                    <td>{songs.title}</td>
+                    <td>{songs.album}</td>
+                    <td>{songs.genre}</td>
+                    <td>{songs.release_date}</td>
+                    <DeleteSong songsid={songs.id} DeleteSongs={deleteMethod} />
+                </tr>
+            </thead>
         )
     })
 
     return(
-        <div>
+        <React.Fragment>
             <h1>Leighton's Music Library</h1>
                 <table>
-                    <tr>
-                        <th>Artist</th>
-                        <th>Title</th>
-                        <th>Album</th>
-                        <th>Genre</th>
-                        <th>Release Date</th>
-                    </tr>
-                        <tbody>
-                            {songsList}
-                        </tbody>
+                    <thead>
+                        <tr>
+                            <th>Artist</th>
+                            <th>Title</th>
+                            <th>Album</th>
+                            <th>Genre</th>
+                            <th>Release Date</th>
+                        </tr>    
+                    </thead>
+                    {songsList}
                 </table>
-       </div>
+        </React.Fragment>
     )
     }
 
@@ -69,4 +88,4 @@ class musicTable extends Component {
     }
 }
 
-export default musicTable;
+export default MusicTable;

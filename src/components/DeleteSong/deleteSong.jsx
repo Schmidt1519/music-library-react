@@ -1,6 +1,12 @@
-import React, {Component} from 'react';
-import axios from 'axios'
+import React from 'react';
 
-class DeleteSong extends Component {
-    
+function DeleteSong(props){
+    console.log(props)
+    return(
+        <div>
+            <button onClick={() => props.DeleteSongs(props.songsid)}>Delete</button>
+        </div>
+    )
 }
+
+export default DeleteSong;
