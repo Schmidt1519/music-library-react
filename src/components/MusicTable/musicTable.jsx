@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import DeleteSong from '../DeleteSong/deleteSong'
 
-
 class MusicTable extends Component {
     constructor(props) {
         super(props);
@@ -48,11 +47,12 @@ class MusicTable extends Component {
         return (
             <thead key={songs.id}>
                 <tr>
-                    <td>{songs.artist}</td>
                     <td>{songs.title}</td>
+                    <td>{songs.artist}</td>
                     <td>{songs.album}</td>
                     <td>{songs.genre}</td>
                     <td>{songs.release_date}</td>
+                    <td>{songs.likes}</td>
                     <DeleteSong songsid={songs.id} DeleteSongs={deleteMethod} />
                 </tr>
             </thead>
@@ -65,11 +65,12 @@ class MusicTable extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>Artist</th>
                             <th>Title</th>
+                            <th>Artist</th>
                             <th>Album</th>
                             <th>Genre</th>
                             <th>Release Date</th>
+                            <th>Likes</th>
                         </tr>    
                     </thead>
                     {songsList}
