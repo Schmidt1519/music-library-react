@@ -5,8 +5,6 @@ class SongForm extends Component {
     constructor(props) {
         super(props);
             this.state = {
-                // songs: [],
-                id: '',
                 title: '',
                 artist: '',
                 album: '',
@@ -22,23 +20,27 @@ class SongForm extends Component {
             this.handleSubmit = this.handleSubmit.bind(this);
     }
     
-    async createSong(song) {
+    async createSong() {
+        const song = {
+            title: this.state.title,
+            artist: this.state.artist,
+            album: this.state.album,
+            genre: this.state.genre,
+            release_date: this.state.release_date,
+        }
         try{
             console.log("create a song request is called")  // test
-            // let response = await axios.post('http://127.0.0.1:8000/music/');
             await axios.post('http://127.0.0.1:8000/music/', song);
-            let response = await this.props.getAllSongs()
-            console.log(response.data)  // test
+            this.props.updateTable();
             this.setState({
-                songs: response.data
             });
+            alert(`${this.state.title} by ${this.state.artist} has been added to the library`)
         }
         catch (ex) {
             console.log(ex);
         }
     }
-        
-    // handleChange = (event) => {
+
     handleChange(event) {
         let errors = this.state.errors;
 
@@ -62,27 +64,9 @@ class SongForm extends Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state.songs);  // test
+        // console.log(this.state.songs);  // test
         event.preventDefault();
-        const song = {
-            id: this.state.id,
-            title: this.state.title,
-            artist: this.state.artist,
-            album: this.state.album,
-            genre: this.state.genre,
-            release_date: this.state.release_date,
-            likes: this.state.likes,
-        }
-        this.createSong(song);
-        this.setState({
-            id: '',
-            title: '',
-            artist: '',
-            album: '',
-            genre: '',
-            release_date: '',
-            likes: '',
-        })
+        this.createSong();
     }
 
         render() {
@@ -110,10 +94,6 @@ class SongForm extends Component {
                     <label>Release Date</label>
                     <input type="text" name="release_date" onChange={this.handleChange} value={this.state.release_date}/>  
                 </div>
-                {/* <div> */}
-                    {/* <label>Likes</label>
-                    <input type="number" name="likes" onChange={this.handleChange} value={this.state.likes}/>   */}
-                {/* </div> */}
                 <div>
                     <button type="submit">Add Song</button>
                 </div>

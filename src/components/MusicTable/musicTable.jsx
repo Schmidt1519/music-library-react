@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import DeleteSong from '../DeleteSong/deleteSong'
+import SongForm from '../SongForm/songForm'
 
 class MusicTable extends Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class MusicTable extends Component {
             this.state = {
                 songs: [],
             }
+            this.getAllSongs = this.getAllSongs.bind(this);
     }
 
     componentDidMount() {
@@ -84,6 +86,7 @@ class MusicTable extends Component {
             <React.Fragment>
                 {console.log(this.state)}
                 {this.renderSongs()}
+                <SongForm updateTable={this.getAllSongs}/>
             </React.Fragment>
         )
     }

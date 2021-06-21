@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import MusicTable from './MusicTable/musicTable';
-import SongForm from './SongForm/songForm';
 
 
 class App extends Component {
@@ -8,12 +7,12 @@ class App extends Component {
         super(props);
             this.state = {
                 // songs: []
-                title: '',
-                artist: '',
-                album: '',
-                genre: '',
-                release_date: '',
-                likes: '',
+                // title: '',
+                // artist: '',
+                // album: '',
+                // genre: '',
+                // release_date: '',
+                // likes: '',
             }
         }
     
@@ -21,7 +20,7 @@ class App extends Component {
         return(
             <div>
                 <MusicTable />
-                <SongForm songs={this.songs} />
+                {/* <SongForm songs={this.songs} /> */}
                 {/* <SongForm createSong={this.props.createSong.bind(this)} /> */}
                 
                 {/* <link
