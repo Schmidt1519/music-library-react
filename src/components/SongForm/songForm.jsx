@@ -71,7 +71,7 @@ class SongForm extends Component {
 
         render() {
         return(
-            <form onSubmit={(event) => this.handleSubmit(event)}>
+            <form className="song-form" onSubmit={(event) => this.handleSubmit(event)}>
                 <div>
                     <label>Title</label>
                     <input type="text" name="title" onChange={this.handleChange} value={this.state.title}/> 

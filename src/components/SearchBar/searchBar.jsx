@@ -27,7 +27,7 @@ class SearchBar extends Component {
     // }
 
     handleChange(event) {
-        this.setState({ isFiltered: event.target.value })
+        this.setState({ searchQuery: event.target.value })
     }
 
     // render () {
@@ -50,8 +50,8 @@ class SearchBar extends Component {
     render() {
         return(
             <div>
-                <label>Search </label>
-                <input type="text" className="search-form" onChange={this.props.filterSongs} value={this.props.isFiltered}/>
+                <input type="search" className="search-form" id="search" placeholder="Search..."
+                onChange={this.props.filterSongs} value={this.props.searchQuery}/>
                 {/* <input type="text" onChange={this.handleChange} value={this.state.search}/> */}
                     {/* <table>
                         <thead>

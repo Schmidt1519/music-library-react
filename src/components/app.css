@@ -1,4 +1,35 @@
+.container{
+    background-image: url(../images/pexels-cassettes-speakers.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 table, th, td {
     border: 1px solid black;
   }
 
+.music-table {
+    background-color: lightgrey;
+}
+
+.danger {
+    border-color: black;
+    color: red;
+    font-weight: 500;   
+  }
+
+.search-form {
+    padding: 1px;
+    display: block;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.song-form {
+    padding: 1px;
+    display: block;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}  

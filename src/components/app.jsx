@@ -4,6 +4,7 @@ import MusicTable from './MusicTable/musicTable';
 import SongForm from './SongForm/songForm';
 import SearchBar from './SearchBar/searchBar';
 import NavBar from './NavBar/navBar';
+import './app.css'
 
 class App extends Component {
     constructor(props) {
@@ -48,16 +49,18 @@ class App extends Component {
     }
 
     filterSongs = (searchQuery) => {
+        console.log("filter songs running")  // test
+        console.log(this.state.songs)  // test
+        console.log(this.state.isFiltered)  // test
+            // Filter the stateful "songs" property by the searchQuery
+        const songFilter = this.state.songs.filter(song => song.title.includes(searchQuery)
+        // song.artist.includes(this.state.isFiltered) || song.album.includes(this.state.isFiltered) || 
+        // song.genre.includes(this.state.isFiltered) || song.release_date.includes(this.state.isFiltered)
+    )
+        console.log(songFilter)  // empty []
         this.setState({
             isFiltered: searchQuery
         });
-        console.log("filter songs running")  // test
-            // Filter the stateful "songs" property by the searchQuery
-        const songFilter = this.state.songs.filter(song => song.title.includes(this.state.isFiltered) || 
-        song.artist.includes(this.state.isFiltered) || song.album.includes(this.state.isFiltered) || 
-        song.genre.includes(this.state.isFiltered) || song.release_date.includes(this.state.isFiltered)
-    )
-        console.log(songFilter)  // empty []
     }
 
     // filterSongs = (event) => {
@@ -69,7 +72,7 @@ class App extends Component {
     
     render() {
         return(
-            <div>
+            <div className="container">
                 <NavBar/>
                 <SearchBar filterSongs={this.filterSongs}/>
                 {/* <SearchBar songs={this.state.songs(isFiltered)}
@@ -77,7 +80,8 @@ class App extends Component {
                     {/*isFiltered={this.state.isFiltered} />*/}
                 <MusicTable songs={this.state.songs} deleteSongs={this.deleteSongById}/>
                 <SongForm updateTable={this.getAllSongs}/>
-
+                
+            
                 {/* <link
                     rel="stylesheet"
                     href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
