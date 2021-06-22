@@ -4,7 +4,7 @@ function DeleteSong(props){
     console.log(props)
     return(
         <div>
-            <button onClick={() => props.DeleteSongs(props.songsid)}>Delete</button>
+            <button onClick={() => props.deleteSongs(props.songid)}>Delete</button>
         </div>
     )
 }
