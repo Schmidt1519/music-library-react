@@ -23,7 +23,7 @@ function MusicTable(props) {
         })
         return(
             <div>
-                <table class="music-table">
+                <table className="music-table">
                     <thead>
                         <tr>
                             <th>Title</th>

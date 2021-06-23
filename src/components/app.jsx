@@ -50,44 +50,27 @@ class App extends Component {
 
     filterSongs = (searchQuery) => {
         console.log("filter songs running")  // test
+        console.log(searchQuery)  // test
         console.log(this.state.songs)  // test
-        console.log(this.state.isFiltered)  // test
+        console.log(this.state.isFiltered)  // test-SyntheticBaseEvent
             // Filter the stateful "songs" property by the searchQuery
-        const songFilter = this.state.songs.filter(song => song.title.includes(searchQuery)
-        // song.artist.includes(this.state.isFiltered) || song.album.includes(this.state.isFiltered) || 
-        // song.genre.includes(this.state.isFiltered) || song.release_date.includes(this.state.isFiltered)
+        const songFilter = this.state.isFiltered.filter(song => song.title.includes(searchQuery)
+        || song.artist.includes(searchQuery) || song.album.includes(searchQuery) || 
+        song.genre.includes(searchQuery) || song.release_date.includes(searchQuery)
     )
         console.log(songFilter)  // empty []
         this.setState({
-            isFiltered: searchQuery
+            isFiltered : songFilter
         });
     }
 
-    // filterSongs = (event) => {
-    //     console.log("hi from onChange", event.target.value)
-    //     this.setState({
-    //         isFiltered: event.target.value
-    //     })
-    // }
-    
     render() {
         return(
             <div className="container">
                 <NavBar/>
                 <SearchBar filterSongs={this.filterSongs}/>
-                {/* <SearchBar songs={this.state.songs(isFiltered)}
-                    filterSongs={this.filterSongs} /> */}
-                    {/*isFiltered={this.state.isFiltered} />*/}
                 <MusicTable songs={this.state.songs} deleteSongs={this.deleteSongById}/>
-                <SongForm updateTable={this.getAllSongs}/>
-                
-            
-                {/* <link
-                    rel="stylesheet"
-                    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-                    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-                    crossorigin="anonymous"
-                /> */}
+                <SongForm updateTable={this.getAllSongs}/>    
             </div>
         )
     }

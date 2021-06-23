@@ -5,10 +5,10 @@ class SearchBar extends Component {
     constructor(props) {
         super(props);
             this.state = {
-                // songs: [],
+                searchQuery: '',
             }
             this.handleChange = this.handleChange.bind(this);
-            // this.handleSubmit = this.handleSubmit.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     // ex: async filterSongs("Beatles")
@@ -27,7 +27,17 @@ class SearchBar extends Component {
     // }
 
     handleChange(event) {
-        this.setState({ searchQuery: event.target.value })
+        this.setState({ 
+            searchQuery: event.target.value
+            // isFiltered : event.target.value
+        })
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        this.props.filterSongs(this.state.searchQuery);
+        // this.setState({
+
     }
 
     // render () {
@@ -49,11 +59,19 @@ class SearchBar extends Component {
     
     render() {
         return(
-            <div>
-                <input type="search" className="search-form" id="search" placeholder="Search..."
-                onChange={this.props.filterSongs} value={this.props.searchQuery}/>
-                {/* <input type="text" onChange={this.handleChange} value={this.state.search}/> */}
-                    {/* <table>
+            <form className="search-bar" onSubmit={(event) => this.handleSubmit(event)}>
+                <div>
+                    <label>Search </label>
+                    <input type="text" className="search-form"
+                    onChange={this.handleChange} value={this.searchQuery}/>
+                </div>
+            </form>
+            // <div>
+            //     <input type="search" className="search-form" id="search" placeholder="Search..."
+            //     onChange={this.handleChange} value={this.props.isFiltered}/>
+            //     <h3>{this.state.isFiltered}</h3>
+                /* <input type="text" onChange={this.props.filterSongs} value={this.props.isFiltered}/> */
+                    /* <table>
                         <thead>
                             <tr>
                                 <th>Title</th>
@@ -65,8 +83,7 @@ class SearchBar extends Component {
                             </tr>    
                         </thead>
                         {searchSongs}
-                    </table> */}
-            </div>
+                    </table> */
         )
     }
 }   
