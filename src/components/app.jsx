@@ -52,15 +52,15 @@ class App extends Component {
         console.log("filter songs running")  // test
         console.log(searchQuery)  // test
         console.log(this.state.songs)  // test
-        console.log(this.state.isFiltered)  // test-SyntheticBaseEvent
+        console.log(this.state.isFiltered)  // test
             // Filter the stateful "songs" property by the searchQuery
-        const songFilter = this.state.isFiltered.filter(song => song.title.includes(searchQuery)
+        const songFilter = this.state.songs.filter(song => song.title.includes(searchQuery)
         || song.artist.includes(searchQuery) || song.album.includes(searchQuery) || 
         song.genre.includes(searchQuery) || song.release_date.includes(searchQuery)
     )
-        console.log(songFilter)  // empty []
+        console.log(songFilter)  //test
         this.setState({
-            isFiltered : songFilter
+            songs : songFilter
         });
     }
 
@@ -69,6 +69,7 @@ class App extends Component {
             <div className="container">
                 <NavBar/>
                 <SearchBar filterSongs={this.filterSongs}/>
+                <button onClick={this.getAllSongs}>Reset</button>
                 <MusicTable songs={this.state.songs} deleteSongs={this.deleteSongById}/>
                 <SongForm updateTable={this.getAllSongs}/>    
             </div>

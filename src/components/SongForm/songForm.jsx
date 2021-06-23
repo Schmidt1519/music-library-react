@@ -64,7 +64,6 @@ class SongForm extends Component {
     }
 
     handleSubmit(event) {
-        // console.log(this.state.songs);  // test
         event.preventDefault();
         this.createSong();
     }
