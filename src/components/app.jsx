@@ -63,12 +63,14 @@ class App extends Component {
 
     render() {
         return(
-            <div className="container">
+            <div className="outer-div">
                 <NavBar/>
-                <SearchBar filterSongs={this.filterSongs}/>
-                <button type="button" className="btn btn-secondary btn-sm" onClick={this.getAllSongs}>Reset</button>
-                <MusicTable songs={this.state.songs} deleteSongs={this.deleteSongById}/>
-                <SongForm updateTable={this.getAllSongs}/>    
+                <div className="container">
+                    <SearchBar filterSongs={this.filterSongs}/>
+                    <button type="button" className="btn btn-secondary btn-sm" onClick={this.getAllSongs}>Reset</button>
+                    <MusicTable songs={this.state.songs} deleteSongs={this.deleteSongById}/>
+                    <SongForm updateTable={this.getAllSongs}/>    
+                </div>
             </div>
         )
     }

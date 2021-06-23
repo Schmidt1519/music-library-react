@@ -5,4 +5,4 @@ import './components/app.css'
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App className="full_height" />, document.getElementById('root'));
