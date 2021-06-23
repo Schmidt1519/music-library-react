@@ -1,12 +1,12 @@
 import React from 'react';
 
 function DeleteSong(props){
-    console.log(props)
+    // console.log(props)   // test
     return(
-        <div>
+        <td>
             <button type="button" className="btn danger btn-sm" onClick={() =>
                 props.deleteSongs(props.songid)}>Delete</button>
-        </div>
+        </td>
     )
 }
 

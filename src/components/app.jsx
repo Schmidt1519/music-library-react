@@ -11,7 +11,6 @@ class App extends Component {
         super(props);
             this.state = {
                 songs: [],
-                isFiltered: []
             }
             this.getAllSongs = this.getAllSongs.bind(this);
             this.deleteSongById = this.deleteSongById.bind(this);
@@ -28,7 +27,6 @@ class App extends Component {
             console.log(response.data)  // test
             this.setState({
                 songs: response.data,
-                isFiltered: response.data
             });
         }
         catch (ex) {
@@ -52,7 +50,6 @@ class App extends Component {
         console.log("filter songs running")  // test
         console.log(searchQuery)  // test
         console.log(this.state.songs)  // test
-        console.log(this.state.isFiltered)  // test
             // Filter the stateful "songs" property by the searchQuery
         const songFilter = this.state.songs.filter(song => song.title.includes(searchQuery)
         || song.artist.includes(searchQuery) || song.album.includes(searchQuery) || 
@@ -69,7 +66,7 @@ class App extends Component {
             <div className="container">
                 <NavBar/>
                 <SearchBar filterSongs={this.filterSongs}/>
-                <button onClick={this.getAllSongs}>Reset</button>
+                <button type="button" className="btn btn-secondary btn-sm" onClick={this.getAllSongs}>Reset</button>
                 <MusicTable songs={this.state.songs} deleteSongs={this.deleteSongById}/>
                 <SongForm updateTable={this.getAllSongs}/>    
             </div>
