@@ -95,7 +95,7 @@ class SongForm extends Component {
                     <input type="text" name="release_date" onChange={this.handleChange} value={this.state.release_date}/>  
                 </div>
                 <div>
-                <button type="button" className="btn btn-primary btn-sm" type="submit">Add Song</button>
+                <button className="btn btn-primary btn-sm" type="submit">Add Song</button>
                 </div>
             </form>
         )

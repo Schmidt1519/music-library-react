@@ -12,14 +12,14 @@ class App extends Component {
             this.state = {
                 songs: [],
             }
-            this.getAllSongs = this.getAllSongs.bind(this);
+            // this.getAllSongs = this.getAllSongs.bind(this);
             this.deleteSongById = this.deleteSongById.bind(this);
         }
 
     componentDidMount() {
         this.getAllSongs();
     }
-
+    
     async getAllSongs() {
         try{
             console.log("make songs request is called")  // test
@@ -40,6 +40,28 @@ class App extends Component {
             await axios.delete(`http://127.0.0.1:8000/music/${id}/`)
             await this.getAllSongs()
             console.log("delete song response")  // test
+        }
+        catch (ex) {
+            console.log(ex);
+        }
+    }
+
+    likeSong = async (id, titles) => {
+        try{
+            console.log("like song function is called")  // test
+            await axios.patch(`http://127.0.0.1:8000/music/${id}/${titles}/`)
+            let response = await this.getAllSongs()
+            console.log("like song response")  // test
+            if(response === undefined) {
+                this.setState({
+
+                })
+            }
+            else{
+              this.setState({
+                songs: response.data,
+            });
+        }
         }
         catch (ex) {
             console.log(ex);
@@ -68,7 +90,8 @@ class App extends Component {
                 <div className="container">
                     <SearchBar filterSongs={this.filterSongs}/>
                     <button type="button" className="btn btn-secondary btn-sm" onClick={this.getAllSongs}>Reset</button>
-                    <MusicTable songs={this.state.songs} deleteSongs={this.deleteSongById}/>
+                    <MusicTable songs={this.state.songs} likeSongs={this.likeSong}
+                        deleteSongs={this.deleteSongById}/>
                     <SongForm updateTable={this.getAllSongs}/>    
                 </div>
             </div>
