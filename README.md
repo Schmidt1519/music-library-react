@@ -1,5 +1,5 @@
 # Music Library (frontend)
-Music Library React frontend that consumes a web API created with Django Rest. 
+Music Library React frontend that consumes a web API created with Django Rest Framework. 
 
 ![Image of MusicLibrary](https://github.com/Schmidt1519/music-library-react/blob/main/Music-Library-screenshot.jpg)
 
