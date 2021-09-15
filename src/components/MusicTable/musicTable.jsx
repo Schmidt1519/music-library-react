@@ -7,7 +7,7 @@ function MusicTable(props) {
     console.log(props.songs)  // test
     if(props.songs === undefined){
         return (
-            null  // better way to handle this?
+            <div></div>
         );
     }
     else{

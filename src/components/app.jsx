@@ -12,7 +12,7 @@ class App extends Component {
             this.state = {
                 songs: [],
             }
-            // this.getAllSongs = this.getAllSongs.bind(this);
+            this.getAllSongs = this.getAllSongs.bind(this);
             this.deleteSongById = this.deleteSongById.bind(this);
         }
 
@@ -72,6 +72,7 @@ class App extends Component {
         console.log("filter songs running")  // test
         console.log(searchQuery)  // test
         console.log(this.state.songs)  // test
+        
             // Filter the stateful "songs" property by the searchQuery
         const songFilter = this.state.songs.filter(song => song.title.includes(searchQuery)
         || song.artist.includes(searchQuery) || song.album.includes(searchQuery) || 
