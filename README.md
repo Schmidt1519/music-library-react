@@ -66,10 +66,10 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <!-- <li><a href="#usage">Usage</a></li> -->
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+    <!-- <li><a href="#license">License</a></li> -->
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
@@ -161,7 +161,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Leighton Schmidt - [@Schmidt15](https://twitter.com/schmidt15) - schmidt1519@gmail.com
+Leighton Schmidt | [LinkedIn](https://www.linkedin.com/in/leighton-schmidt86/) | schmidt1519@gmail.com
 
 Frontend: [https://github.com/Schmidt1519/music-library-react](https://github.com/Schmidt1519/music-library-react)
 <br />
@@ -170,4 +170,5 @@ Backend: [https://github.com/Schmidt1519/music-library](https://github.com/Schmi
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* devCodeCamp
+* devCodeCamp instructors
+* My family
